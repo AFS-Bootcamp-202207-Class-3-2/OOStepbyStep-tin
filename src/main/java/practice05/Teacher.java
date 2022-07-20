@@ -17,6 +17,7 @@ public class Teacher extends Person {
         return klass;
     }
 
+    @Override
     public String introduce(){
         if(this.getKlass() == null){
             return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Teacher. I teach No Class.";

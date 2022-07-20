@@ -21,6 +21,7 @@ public class Student extends Person{
         return klass;
     }
 
+    @Override
     public String introduce(){
         return "I am a Student. I am at Class " + this.getKlass() + ".";
     }

@@ -1,5 +1,6 @@
 package practice10;
 
+import common.Message;
 import practice10.Student;
 
 import java.util.ArrayList;
@@ -31,12 +32,11 @@ public class Klass {
 
     public void assignLeader(Student student) {
         if(!this.studentList.contains(student)){
-            System.out.print("It is not one of us.\n");
+            System.out.print(Message.KLASS_NOT_CONTAINS_STUDENT);
             this.leader = null;
         }else {
             for (Teacher teacher : this.teacherList) {
-                System.out.print("I am " + teacher.getName() + ". I know " + student.getName() +
-                        " become Leader of Class " + this.number + ".\n");
+                System.out.print(String.format(Message.KLASS_CONTAINS_STUDENT,teacher.getName(),student.getName(),this.number));
             }
 
             this.leader = student;
@@ -50,8 +50,7 @@ public class Klass {
 
     public void appendMember(Student student) {
         for (Teacher teacher : this.teacherList) {
-            System.out.print("I am " + teacher.getName() + ". I know " +
-                    student.getName() + " has joined Class " + this.number + ".\n");
+            System.out.print(String.format(Message.KLASS_APPEND_MEMBER,teacher.getName(), student.getName(), this.number));
         }
         student.setKlass(this);
         this.studentList.add(student);

@@ -1,5 +1,6 @@
 package practice10;
 
+import common.Message;
 import practice10.Klass;
 import practice10.Person;
 import practice10.Student;
@@ -27,19 +28,20 @@ public class Teacher extends Person {
 
     public String introduceWith(Student student) {
         if(isTeaching(student)){
-            return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Teacher. I teach " + student.getName() + ".";
+            return String.format(Message.TEACHER_IS_TEACHING, this.getName(), this.getAge(), student.getName());
         }
-        return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Teacher. I don't teach " + student.getName() + ".";
+        return String.format(Message.TEACHER_NOT_IS_TEACHING, this.getName(), this.getAge(), student.getName());
     }
 
     @Override
     public String introduce() {
         if(this.getClasses().size() != 0){
-            return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Teacher. I teach Class " + this.getClasses().stream()
+            return String.format(Message.TEACHER_HAS_CLASSES, this.getName(), this.getAge(),
+                    this.getClasses().stream()
                     .map(klass -> String.valueOf(klass.getNumber()))
-                    .collect(Collectors.joining(", ")) + ".";
+                    .collect(Collectors.joining(", ")));
         }
-        return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Teacher. I teach No Class.";
+        return String.format(Message.TEACHER_NOT_HAS_CLASSES, this.getName(), this.getAge());
 
     }
 

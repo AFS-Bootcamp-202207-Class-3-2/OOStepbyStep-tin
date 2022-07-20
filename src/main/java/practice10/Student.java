@@ -1,5 +1,6 @@
 package practice10;
 
+import common.Message;
 import practice10.Klass;
 import practice10.Person;
 
@@ -19,9 +20,9 @@ public class Student extends Person {
     @Override
     public String introduce(){
         if(this.klass.getLeader() == null){
-            return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Student. I am at Class " + this.getKlass().getNumber() + ".";
+            return String.format(Message.STUDENT_NOT_HAS_LEADER,this.getName(), this.getAge(), this.getKlass().getNumber());
         }else{
-            return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Student. I am Leader of Class " + this.getKlass().getNumber() + ".";
+            return String.format(Message.STUDENT_HAS_LEADER,this.getName(), this.getAge(), this.getKlass().getNumber());
         }
 
     }

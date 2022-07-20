@@ -1,5 +1,7 @@
 package practice10;
 
+import common.Message;
+
 import java.util.Objects;
 
 public class Person {
@@ -25,7 +27,7 @@ public class Person {
     }
 
     public String introduce() {
-        return "My name is " + this.getName() + ". I am " + this.getAge() + " years old.";
+        return String.format(Message.PERSON_INTRODUCE,this.getName(),this.getAge());
     }
 
     @Override
