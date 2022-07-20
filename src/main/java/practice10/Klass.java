@@ -13,6 +13,8 @@ public class Klass {
 
     public List<Student> studentList = new ArrayList<>();
 
+    public List<Teacher> teacherList = new ArrayList<>();
+
     public Klass(Integer number) {
         this.number = number;
     }
@@ -32,7 +34,11 @@ public class Klass {
             System.out.print("It is not one of us.\n");
             this.leader = null;
         }else {
-            System.out.print("I am Tom. I know Jerry become Leader of Class 2.\n");
+            for (Teacher teacher : this.teacherList) {
+                System.out.print("I am " + teacher.getName() + ". I know " + student.getName() +
+                        " become Leader of Class " + this.number + ".\n");
+            }
+
             this.leader = student;
         }
 
@@ -43,7 +49,10 @@ public class Klass {
     }
 
     public void appendMember(Student student) {
-        System.out.print("I am Tom. I know Jerry has joined Class 2.\n");
+        for (Teacher teacher : this.teacherList) {
+            System.out.print("I am " + teacher.getName() + ". I know " +
+                    student.getName() + " has joined Class " + this.number + ".\n");
+        }
         student.setKlass(this);
         this.studentList.add(student);
     }

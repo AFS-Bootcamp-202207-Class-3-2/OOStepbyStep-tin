@@ -19,15 +19,17 @@ public class Teacher extends Person {
 
     public Teacher(Integer id, String name, int age, LinkedList<Klass> list) {
         super(id, name, age);
+        for (Klass klass : list) {
+            klass.teacherList.add(this);
+        }
         this.list = list;
     }
 
     public String introduceWith(Student student) {
         if(isTeaching(student)){
             return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Teacher. I teach " + student.getName() + ".";
-        }else{
-            return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Teacher. I don't teach " + student.getName() + ".";
         }
+        return "My name is " + this.getName() + ". I am " + this.getAge() + " years old. I am a Teacher. I don't teach " + student.getName() + ".";
     }
 
     @Override
